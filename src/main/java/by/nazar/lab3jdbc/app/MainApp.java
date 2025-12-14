@@ -7,6 +7,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
+import by.nazar.lab3jdbc.util.ConnectionPool;
 
 public class MainApp {
     private static final Scanner scanner = new Scanner(System.in);
@@ -41,7 +42,7 @@ public class MainApp {
                 case 6 -> showInvoices(invoiceDAO);
                 case 0 -> {
                     System.out.println("Выход из программы...");
-                    return;
+                    exitApp();
                 }
                 default -> System.out.println("Неверный выбор!");
             }
@@ -92,5 +93,15 @@ public class MainApp {
     private static void showInvoices(InvoiceDAO dao) {
         List<Invoice> invoices = dao.findAll();
         invoices.forEach(System.out::println);
+    }
+
+    private static void exitApp() {
+        try {
+            ConnectionPool.getInstance().shutdown();
+            System.out.println("Все соединения закрыты. Завершение работы...");
+        } catch (Exception e) {
+            System.err.println("Ошибка при завершении пула соединений: " + e.getMessage());
+        }
+        System.exit(0);
     }
 }
