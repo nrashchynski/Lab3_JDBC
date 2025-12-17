@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="3.0" xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence
+             https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
+
+    <persistence-unit name="developer-team-pu" transaction-type="RESOURCE_LOCAL">
+        <description>Persistence Unit for Developer Team System (Lab 4)</description>
+
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+
+<!--        <class>by.nazar.lab3jdbc.model.Customer</class>-->
+<!--        <class>by.nazar.lab3jdbc.model.Developer</class>-->
+<!--        <class>by.nazar.lab3jdbc.model.Project</class>-->
+<!--        <class>by.nazar.lab3jdbc.model.TechSpec</class>-->
+<!--        <class>by.nazar.lab3jdbc.model.Assignment</class>-->
+<!--        <class>by.nazar.lab3jdbc.model.Invoice</class>-->
+
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+
+        <properties>
+            <property name="jakarta.persistence.jdbc.url"
+                      value="jdbc:mysql://localhost:3306/developer_team_db?useSSL=false&amp;serverTimezone=UTC"/>
+
+            <property name="jakarta.persistence.jdbc.user" value="root"/>
+
+            <property name="jakarta.persistence.jdbc.password" value="1111"/>
+
+            <property name="jakarta.persistence.jdbc.driver"
+                      value="com.mysql.cj.jdbc.Driver"/>
+
+            <property name="jakarta.persistence.schema-generation.database.action"
+                      value="none"/>
+
+            <property name="eclipselink.logging.level.sql" value="OFF"/>
+            <property name="eclipselink.logging.parameters" value="true"/>
+
+            <property name="eclipselink.logging.level" value="OFF"/>
+
+            <property name="eclipselink.cache.shared.default" value="false"/>
+
+            <property name="eclipselink.jdbc.timezone" value="UTC"/>
+        </properties>
+    </persistence-unit>
+
+</persistence>
